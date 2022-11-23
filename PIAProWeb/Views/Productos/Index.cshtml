@@ -19,7 +19,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.PrecioProducto)
             </th>
-            <th>
+            <th>  
                 @Html.DisplayNameFor(model => model.Descripcion)
             </th>
             <th>
@@ -47,7 +47,7 @@
                 @Html.DisplayFor(modelItem => item.Descripcion)
             </td>
             <td>
-                    <img src="~/Fotos/Productos/@Html.DisplayFor(modelItem => item.ImagenProducto)">
+                    <img src="~/Fotos/Productos/@Html.DisplayFor(modelItem => item.ImagenProducto)" width="300" height="150"/>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.StockProducto)
