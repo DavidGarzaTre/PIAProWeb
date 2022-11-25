@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -11,6 +12,7 @@ using PIAProWeb.Models.DTO;
 
 namespace PIAProWeb.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class ProductosController : Controller
     {
         private readonly PIAProWebContext _context;
@@ -51,7 +53,7 @@ namespace PIAProWeb.Controllers
         // GET: Productos/Create
         public IActionResult Create()
         {
-            ViewData["IdCategoria"] = new SelectList(_context.CategoriaProductos, "IdCategoria", "IdCategoria");
+            ViewData["IdCategoria"] = new SelectList(_context.CategoriaProductos, "IdCategoria", "Nombre");
             return View();
         }
 
@@ -78,7 +80,7 @@ namespace PIAProWeb.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdCategoria"] = new SelectList(_context.CategoriaProductos, "IdCategoria", "IdCategoria", producto.IdCategoria);
+            ViewData["IdCategoria"] = new SelectList(_context.CategoriaProductos, "IdCategoria", "Nombre", producto.IdCategoria);
             return View(producto);
         }
         public async Task<string?> ReemplazarFotografiaAsync(IFormFile? file, string? fileToReplace)
@@ -153,8 +155,18 @@ namespace PIAProWeb.Controllers
             {
                 return NotFound();
             }
-            ViewData["IdCategoria"] = new SelectList(_context.CategoriaProductos, "IdCategoria", "IdCategoria", producto.IdCategoria);
-            return View(producto);
+            ProductoUpdateDTO productoupdate = new ProductoUpdateDTO {
+                IdProducto= producto.IdProducto,
+                IdCategoria = producto.IdCategoria,
+                NombreProducto = producto.NombreProducto,
+                PrecioProducto = producto.PrecioProducto,
+                Descripcion = producto.Descripcion,
+                Imagen = producto.ImagenProducto,
+                StockProducto = producto.StockProducto
+
+            };
+            ViewData["IdCategoria"] = new SelectList(_context.CategoriaProductos, "IdCategoria", "Nombre", producto.IdCategoria);
+            return View(productoupdate);
         }
 
         // POST: Productos/Edit/5
@@ -162,8 +174,9 @@ namespace PIAProWeb.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdProducto,IdCategoria,NombreProducto,PrecioProducto,Descripcion,ImagenProducto,StockProducto")] Producto producto)
+        public async Task<IActionResult> Edit(int id, ProductoUpdateDTO producto)
         {
+
             if (id != producto.IdProducto)
             {
                 return NotFound();
@@ -173,7 +186,18 @@ namespace PIAProWeb.Controllers
             {
                 try
                 {
-                    _context.Update(producto);
+                    string? fileName = await ReemplazarFotografiaAsync(producto.ImagenProducto, producto.Imagen);
+                    Producto p = new Producto
+                    {
+                        IdProducto = producto.IdProducto,   
+                        IdCategoria = producto.IdCategoria,
+                        NombreProducto = producto.NombreProducto,
+                        PrecioProducto = producto.PrecioProducto,
+                        Descripcion = producto.Descripcion,
+                        ImagenProducto = fileName== null? producto.Imagen: fileName,
+                        StockProducto = producto.StockProducto
+                    };
+                    _context.Update(p);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -189,7 +213,7 @@ namespace PIAProWeb.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdCategoria"] = new SelectList(_context.CategoriaProductos, "IdCategoria", "IdCategoria", producto.IdCategoria);
+            ViewData["IdCategoria"] = new SelectList(_context.CategoriaProductos, "IdCategoria", "Nombre", producto.IdCategoria);
             return View(producto);
         }
 

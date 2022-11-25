@@ -1,4 +1,4 @@
-﻿@model PIAProWeb.Models.dbModels.Producto
+﻿@model PIAProWeb.Models.DTO.ProductoUpdateDTO
 
 @{
     ViewData["Title"] = "Edit";
@@ -10,7 +10,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit">
+        <form asp-action="Edit" enctype="multipart/form-data" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="IdProducto" />
             <div class="form-group">
@@ -34,6 +34,7 @@
                 <span asp-validation-for="Descripcion" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <input type="hidden" asp-for="Imagen" class="form-control" />
                 <label asp-for="ImagenProducto" class="control-label"></label>
                 <input asp-for="ImagenProducto" class="form-control" />
                 <span asp-validation-for="ImagenProducto" class="text-danger"></span>

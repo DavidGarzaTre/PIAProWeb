@@ -29,7 +29,8 @@
                 @Html.DisplayNameFor(model => model.StockProducto)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdCategoriaNavigation)
+                @*@Html.DisplayNameFor(model => model.IdCategoriaNavigation)*@
+                Categoria
             </th>
             <th></th>
         </tr>
@@ -53,12 +54,12 @@
                 @Html.DisplayFor(modelItem => item.StockProducto)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IdCategoriaNavigation.IdCategoria)
+                @Html.DisplayFor(modelItem => item.IdCategoriaNavigation.Nombre)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.IdProducto">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdProducto">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdProducto">Delete</a>
+                <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.IdProducto">Edit</a> |
+                <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.IdProducto">Details</a> |
+                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.IdProducto">Delete</a>
             </td>
         </tr>
 }
