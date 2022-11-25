@@ -1,5 +1,6 @@
 html {
   font-size: 14px;
+  background-color:antiquewhite;
 }
 
 @media (min-width: 768px) {
@@ -15,5 +16,15 @@ html {
 
 body {
   margin-bottom: 60px;
+}
+
+#nosotrostxt{
+    margin-right:20rem;
+}
+#nosotrosh1{
+    color:blue;
+}
+.contactanos{
+    padding-top: 1rem;
 }
 
