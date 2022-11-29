@@ -64,6 +64,7 @@ namespace PIAProWeb.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(ProductoCreateDTO producto)
         {
+
             if (ModelState.IsValid)
             {
                 string? fileName = await GuardarFotografiaProductoAsync(producto.ImagenProducto);
@@ -80,7 +81,7 @@ namespace PIAProWeb.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdCategoria"] = new SelectList(_context.CategoriaProductos, "IdCategoria", "Nombre", producto.IdCategoria);
+            ViewData["IdProducto"] = new SelectList(_context.CategoriaProductos, "IdCategoria", "Nombre", producto.IdCategoria);
             return View(producto);
         }
         public async Task<string?> ReemplazarFotografiaAsync(IFormFile? file, string? fileToReplace)

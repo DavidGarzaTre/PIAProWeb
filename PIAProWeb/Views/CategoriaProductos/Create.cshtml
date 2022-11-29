@@ -1,11 +1,15 @@
 ﻿@model PIAProWeb.Models.dbModels.CategoriaProducto
 
-@{
-    ViewData["Title"] = "Create";
-}
-
-<h1>Create</h1>
-
+<nav>
+    @{
+        Layout = "_LayoutAdmin";
+        ViewData["Title"] = "Create";
+    }
+</nav>
+<header>
+<h1>Crear Categoria</h1>
+</header>
+<section>
 <h4>CategoriaProducto</h4>
 <hr />
 <div class="row">
@@ -33,10 +37,11 @@
         </form>
     </div>
 </div>
+</section>
 
-<div>
-    <a asp-action="Index" class="btn btn-primary">Back to List</a>
-</div>
+<section>
+    <a asp-action="Index" class="btn btn-primary">Regresar al Indice</a>
+</section>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

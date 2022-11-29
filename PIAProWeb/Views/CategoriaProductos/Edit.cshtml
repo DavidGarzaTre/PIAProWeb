@@ -1,13 +1,18 @@
 ﻿@model PIAProWeb.Models.dbModels.CategoriaProducto
 
-@{
-    ViewData["Title"] = "Edit";
-}
-
-<h1>Edit</h1>
+<nav>
+    @{
+        Layout = "_LayoutAdmin";
+        ViewData["Title"] = "Edit";
+    }
+</nav>
+<header>
+<h1>Editar Categoria</h1>
+</header>
 
 <h4>CategoriaProducto</h4>
 <hr />
+<section>
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
@@ -29,10 +34,11 @@
         </form>
     </div>
 </div>
+</section>
 
-<div>
+<section>
     <a asp-action="Index" class="btn btn-primary">Regresar al Indice</a>
-</div>
+</section>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

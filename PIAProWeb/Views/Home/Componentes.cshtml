@@ -1,10 +1,12 @@
 ﻿@model IEnumerable<PIAProWeb.Models.dbModels.Producto>
+<nav>
 @{
     Layout = "_LayoutComponentes";
     ViewData["Title"] = "Componentes";
 
 }
-<div class="container">
+</nav>
+<section class="container">
     <div class="row">
         @foreach(Producto item in Model){
 
@@ -24,7 +26,7 @@
     
     }
 </div>
-</div>
+</section>
 
 @*<nav class="navbar navbar-expand-lg navbar-light" style="background-color:white;" id="navcomp">
     <a class="navbar-brand" href="#">Navbar</a>

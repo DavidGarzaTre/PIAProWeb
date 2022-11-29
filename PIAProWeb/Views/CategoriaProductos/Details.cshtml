@@ -1,12 +1,16 @@
 ﻿@model PIAProWeb.Models.dbModels.CategoriaProducto
 
-@{
-    ViewData["Title"] = "Details";
-}
+<nav>
+    @{
+        Layout = "_LayoutAdmin";
+        ViewData["Title"] = "Details";
+    }
+</nav>
+<header>
+<h1>Detalles</h1>
+</header>
 
-<h1>Details</h1>
-
-<div>
+<section>
     <h4>CategoriaProducto</h4>
     <hr />
     <dl class="row">
@@ -23,8 +27,8 @@
             @Html.DisplayFor(model => model.Descripcion)
         </dd>
     </dl>
-</div>
-<div>
+</section>
+<section>
     <a asp-action="Edit" asp-route-id="@Model?.IdCategoria" class="btn btn-warning">Edit</a> |
     <a asp-action="Index" class="btn btn-primary">Back to List</a>
-</div>
+</section>

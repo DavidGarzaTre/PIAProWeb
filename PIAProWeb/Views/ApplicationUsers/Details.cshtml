@@ -1,12 +1,16 @@
 ﻿@model PIAProWeb.Models.dbModels.ApplicationUser
 
-@{
-    ViewData["Title"] = "Details";
-}
-
+<nav>
+    @{
+        Layout = "_LayoutAdmin";
+        ViewData["Title"] = "Details";
+    }
+</nav>
+<header>
 <h1>Details</h1>
-
-<div>
+</header>
+<section>
+<artcle>
     <h4>ApplicationUser</h4>
     <hr />
     <dl class="row">
@@ -23,7 +27,8 @@
             @Html.DisplayFor(model => model.Apellido)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CalleNumero)
+            @*@Html.DisplayNameFor(model => model.CalleNumero)*@
+            Direccion con Numero
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.CalleNumero)
@@ -137,8 +142,9 @@
             @Html.DisplayFor(model => model.AccessFailedCount)
         </dd>
     </dl>
-</div>
+</artcle>
 <div>
     <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-warning">Edit</a> |
     <a asp-action="Index" class="btn btn-primary">Back to List</a>
 </div>
+</section>

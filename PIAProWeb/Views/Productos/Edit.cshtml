@@ -1,11 +1,15 @@
 ﻿@model PIAProWeb.Models.DTO.ProductoUpdateDTO
 
+<nav>
 @{
+    Layout = "_LayoutAdmin";
     ViewData["Title"] = "Edit";
 }
-
-<h1>Edit</h1>
-
+</nav>
+<header>
+<h1>Editar Producto</h1>
+</header>
+<section>
 <h4>Producto</h4>
 <hr />
 <div class="row">
@@ -50,10 +54,11 @@
         </form>
     </div>
 </div>
+</section>
 
-<div>
+<section>
     <a asp-action="Index" class="btn btn-primary">Regresar al Indice</a>
-</div>
+</section>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

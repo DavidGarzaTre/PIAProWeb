@@ -1,13 +1,18 @@
 ﻿@model PIAProWeb.Models.DTO.ProductoCreateDTO
 
-@{
-    ViewData["Title"] = "Create";
-}
-
+<nav>
+    @{
+        Layout = "_LayoutAdmin";
+        ViewData["Title"] = "Create";
+    }
+</nav>
+<header>
 <h1>Crear Nuevo Producto</h1>
+</header>
 
 <h4>Producto</h4>
 <hr />
+<section>
 <div class="row">
     <div class="col-md-4">
         <form enctype="multipart/form-data" asp-action="Create">
@@ -47,10 +52,11 @@
         </form>
     </div>
 </div>
+</section>
 
-<div>
+<section>
     <a asp-action="Index" class="btn btn-primary">Regresar al Indice</a>
-</div>
+</section>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
