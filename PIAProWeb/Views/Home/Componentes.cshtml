@@ -13,8 +13,8 @@
          <div class="card" style="width: 15rem;">
                 <img src="~/Fotos/Productos/@Html.DisplayFor(modelItem => item.ImagenProducto)" width="300" height="150" class="card-img-top" alt="...">
         <div class="card-body">
-                    <h5 class="card-title" @Html.DisplayFor(modelItem => item.NombreProducto)>Nombre Producto</h5>
-                    <p class="card-text" @Html.DisplayFor(modelItem => item.PrecioProducto)>Precio Producto</p>
+                            <h5 class="card-title">@Html.DisplayFor(modelItem => item.NombreProducto)</h5>
+                            <p class="card-text">@Html.DisplayFor(modelItem => item.PrecioProducto)</p>
 
                     <a asp-action="Create" class="btn btn-primary">Agregar al Carrito</a>
         </div>    
