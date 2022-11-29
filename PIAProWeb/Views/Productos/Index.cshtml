@@ -1,69 +1,77 @@
 ﻿@model IEnumerable<PIAProWeb.Models.dbModels.Producto>
 
 @{
+    Layout = "_LayoutAdmin";
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Administración de Productos</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
 
 </p>
-<table class="table">
+<table class="table" id="myTable">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.NombreProducto)
+                @*@Html.DisplayNameFor(model => model.NombreProducto)*@ Nombre
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.PrecioProducto)
-            </th>
-            <th>  
-                @Html.DisplayNameFor(model => model.Descripcion)
+               @* @Html.DisplayNameFor(model => model.PrecioProducto)*@ Precio
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ImagenProducto)
+                @*@Html.DisplayNameFor(model => model.ImagenProducto)*@ Imagen
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.StockProducto)
+                @*@Html.DisplayNameFor(model => model.StockProducto)*@ Stock
             </th>
+
             <th>
                 @*@Html.DisplayNameFor(model => model.IdCategoriaNavigation)*@
                 Categoria
             </th>
-            <th></th>
+            <th>
+                Editar
+            </th>
+            <th>
+                Detalles
+            </th>
+            <th>
+                Borrar
+            </th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
             <td>
-                @*@Html.DisplayFor(modelItem => item.NombreProducto)*@
-                Nombre
+                @Html.DisplayFor(modelItem => item.NombreProducto)
             </td>
             <td>
-                @*@Html.DisplayFor(modelItem => item.PrecioProducto)*@
-                Precio
+                @Html.DisplayFor(modelItem => item.PrecioProducto)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Descripcion)
-            </td>
+
             <td>
                     <img src="~/Fotos/Productos/@Html.DisplayFor(modelItem => item.ImagenProducto)" width="300" height="150"/>
             </td>
             <td>
-                @*@Html.DisplayFor(modelItem => item.StockProducto)*@
-                Stock
+                @Html.DisplayFor(modelItem => item.StockProducto)
+                
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.IdCategoriaNavigation.Nombre)
             </td>
             <td>
-                <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.IdProducto">Edit</a> |
-                <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.IdProducto">Details</a> |
-                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.IdProducto">Delete</a>
+                <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.IdProducto">Edit</a> 
             </td>
+                <td>
+                    <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.IdProducto">Details</a> 
+                    
+                </td>
+                <td>
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.IdProducto">Delete</a>
+                </td>
         </tr>
 }
     </tbody>

@@ -16,6 +16,11 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole<int>>(options => opti
     .AddDefaultTokenProviders();
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
+builder.Services.ConfigureApplicationCookie(option =>
+{
+    option.AccessDeniedPath = "/Identity/Account/AccessDenied";
+    option.LoginPath = "/Identity/Account/Login";
+});
 
 var app = builder.Build();
 

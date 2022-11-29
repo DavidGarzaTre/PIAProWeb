@@ -22,20 +22,18 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index" class="carro">Home</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Componentes" class="carro">Componentes</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Productos" asp-action="Index">Control Productos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="ApplicationUsers" asp-action="Index" class="carro">Admin</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="CategoriaProductos" asp-action="">Control Categorias</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="ApplicationUsers" asp-action="Index">Control Usuarios</a>
                         </li>
 
-                        <li class="nav-item" id="navcarrito">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Carrito" asp-action="Index" class="carro">Carrito</a>
-                            
-                        </li>
-                        
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>

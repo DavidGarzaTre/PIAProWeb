@@ -1,14 +1,13 @@
 ﻿@model IEnumerable<PIAProWeb.Models.dbModels.ApplicationUser>
 
 @{
+    Layout = "_LayoutAdmin";
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Registro de Usuarios</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+
 <table class="table">
     <thead>
         <tr>
@@ -30,25 +29,25 @@
             <th>
                 @Html.DisplayNameFor(model => model.CodigoPostal)
             </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.Referencias)
-            </th>
+            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.UserName)
             </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.NormalizedUserName)
-            </th>
+            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.Email)
             </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.NormalizedEmail)
-            </th>
+            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.EmailConfirmed)
             </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.PasswordHash)
             </th>
             <th>
@@ -74,8 +73,8 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.AccessFailedCount)
-            </th>
-            <th></th>
+            </th>*@
+
         </tr>
     </thead>
     <tbody>
@@ -99,25 +98,25 @@
             <td>
                 @Html.DisplayFor(modelItem => item.CodigoPostal)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.Referencias)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.UserName)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.NormalizedUserName)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.Email)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.NormalizedEmail)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.EmailConfirmed)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.PasswordHash)
             </td>
             <td>
@@ -143,11 +142,13 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.AccessFailedCount)
+            </td>*@
+            <td>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary">Details</a>
+                    
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
             </td>
         </tr>
 }

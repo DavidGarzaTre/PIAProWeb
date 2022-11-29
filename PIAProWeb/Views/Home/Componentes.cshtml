@@ -1,6 +1,7 @@
 ﻿@model IEnumerable<PIAProWeb.Models.dbModels.Producto>
 @{
-         ViewData["Title"] = "Componentes";
+    Layout = "_LayoutComponentes";
+    ViewData["Title"] = "Componentes";
 
 }
 <div class="container">
@@ -8,16 +9,53 @@
         @foreach(Producto item in Model){
 
         <div class="col-lg-4 p-3 mx-auto">
+            <form asp-controller="Carrito" asp-action="Create" method="post">
          <div class="card" style="width: 15rem;">
                 <img src="~/Fotos/Productos/@Html.DisplayFor(modelItem => item.ImagenProducto)" width="300" height="150" class="card-img-top" alt="...">
         <div class="card-body">
                     <h5 class="card-title" @Html.DisplayFor(modelItem => item.NombreProducto)>Nombre Producto</h5>
                     <p class="card-text" @Html.DisplayFor(modelItem => item.PrecioProducto)>Precio Producto</p>
-            <input type="number" placeholder="cantidad de producto">
+
                     <a asp-action="Create" class="btn btn-primary">Agregar al Carrito</a>
         </div>    
             </div>
+                </form>
     </div>
+    
     }
 </div>
 </div>
+
+@*<nav class="navbar navbar-expand-lg navbar-light" style="background-color:white;" id="navcomp">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Dropdown
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+        </form>*@

@@ -74,7 +74,7 @@ namespace PIAProWeb.Controllers
                     PrecioProducto = producto.PrecioProducto,
                     Descripcion = producto.Descripcion,
                     ImagenProducto = fileName,
-                    StockProducto  = producto.StockProducto
+                    StockProducto  = producto.StockProducto,
                 };
                 _context.Add(p);
                 await _context.SaveChangesAsync();

@@ -1,9 +1,12 @@
 ﻿@model IEnumerable<PIAProWeb.Models.dbModels.Carrito>
 
 @{
+    Layout = "_Layout";
     ViewData["Title"] = "Index";
 }
-
+<head>
+    <script src="https://kit.fontawesome.com/e3579fd25f.js" crossorigin="anonymous"></script>
+</head>
 <h1>Index</h1>
 
 <p>
@@ -13,30 +16,53 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.CantidadProducto)
+                @*@Html.DisplayNameFor(model => model.CantidadProducto)*@
+                Imagen
+
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdProductoNavigation)
+               @* @Html.DisplayNameFor(model => model.IdProductoNavigation)*@
+               Nombre
+            </th>
+            <th>
+                @* @Html.DisplayNameFor(model => model.IdProductoNavigation)*@
+                Precio
+            </th>
+            <th>
+                @* @Html.DisplayNameFor(model => model.IdProductoNavigation)*@
+                Cantidad
             </th>
 
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+@*@foreach (var item in Model) {*@
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.CantidadProducto)
+                    @*<img src="~/Fotos/Productos/@Html.DisplayFor(modelItem => item.ImagenProducto)" width="300" height="150" />*@ Imagen
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IdProductoNavigation.IdProducto)
+                @*@Html.DisplayFor(modelItem => item.IdProductoNavigation.NombreProducto)*@ Nombre
             </td>
+                <td>
+                    @*@Html.DisplayFor(modelItem => item.IdProductoNavigation.PrecioProducto)*@ Precio
+                </td>
+                <td>
+                    <input type="number" placeholder="Ingrese la cantidad que desea agregar al carrito">
+                </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                <i class="fa-thin fa-trash"></i>
                 @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
             </td>
         </tr>
-}
+
     </tbody>
 </table>
+ <div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title">El precio final de su compra es de </h5>
+        <p class="card-text">aqui va el precio final.</p>
+        <a class=" btn btn-primary">Proceder al Pago</a>
+
+    </div>

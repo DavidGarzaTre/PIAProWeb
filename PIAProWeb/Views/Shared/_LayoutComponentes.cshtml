@@ -28,14 +28,14 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Componentes" class="carro">Componentes</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="ApplicationUsers" asp-action="Index" class="carro">Admin</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Productos" asp-action="Index" class="carro">Admin</a>
                         </li>
 
                         <li class="nav-item" id="navcarrito">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Carrito" asp-action="Index" class="carro">Carrito</a>
-                            
+
                         </li>
-                        
+
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>
@@ -47,6 +47,17 @@
             @RenderBody()
         </main>
     </div>
+    <aside class="lateral">
+        <header>Indice</header>
+        <ul class="menuVert">
+            <li><a asp-controller="Home" asp-action="Componentes" asp-route-IdCategoria="2">Procesadores</a></li>
+            <li><a asp-controller="Home" asp-action="Componentes" asp-route-IdCategoria="3">Disco Duro</a></li>
+            <li><a asp-controller="Home" asp-action="Componentes" asp-route-IdCategoria="4">Fuente de Alimentacion</a></li>
+            <li><a asp-controller="Home" asp-action="Componentes" asp-route-IdCategoria="5">Tarjeta Grafica'</a></li>
+            <li><a asp-controller="Home" asp-action="Componentes" asp-route-IdCategoria="6">Placa Madre</a></li>
+            <li><a asp-controller="Home" asp-action="Componentes" asp-route-IdCategoria="7">Memoria RAM</a></li>
+        </ul>
+    </aside>
 
     <footer class="border-top footer text-muted">
         <div class="container">

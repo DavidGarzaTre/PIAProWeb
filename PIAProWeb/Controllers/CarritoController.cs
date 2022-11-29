@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -9,6 +12,8 @@ using PIAProWeb.Models.dbModels;
 
 namespace PIAProWeb.Controllers
 {
+    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Usuario")]
     public class CarritoController : Controller
     {
         private readonly PIAProWebContext _context;
@@ -45,31 +50,31 @@ namespace PIAProWeb.Controllers
             return View(carrito);
         }
 
-        // GET: Carrito/Create
-        public IActionResult Create()
-        {
-            ViewData["IdProducto"] = new SelectList(_context.Productos, "IdProducto", "IdProducto");
-            ViewData["IdUsuario"] = new SelectList(_context.Users, "Id", "Id");
-            return View();
-        }
+
+
+        
 
         // POST: Carrito/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdUsuario,IdProducto,CantidadProducto")] Carrito carrito)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(carrito);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["IdProducto"] = new SelectList(_context.Productos, "IdProducto", "IdProducto", carrito.IdProducto);
-            ViewData["IdUsuario"] = new SelectList(_context.Users, "Id", "Id", carrito.IdUsuario);
-            return View(carrito);
-        }
+        //public async Task<IActionResult> Create(int IdProducto)
+        //{
+
+        //    if (ModelState.IsValid)
+        //    {
+        //        Carrito carrito = new Carrito();
+        //        carrito.IdProducto = IdProducto;
+        //        carrito.IdUsuario = 
+
+        //        _context.Carritos.Add(carrito);
+        //        await _context.SaveChangesAsync();
+        //        return RedirectToAction(nameof(Index));
+        //    }
+           
+        //    return View(carrito);
+        //}
 
         // GET: Carrito/Edit/5
         public async Task<IActionResult> Edit(int? id)
